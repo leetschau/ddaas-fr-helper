@@ -5,8 +5,8 @@ import com.fr.data.AbstractTableData
 import groovy.json.JsonSlurper
 
 /**
- * Created by leo on 17-1-20.
- */
+*  Created by leo on 17-1-20.
+*/
 
 class DFRH extends AbstractTableData {
     int colNum = 0
@@ -40,8 +40,10 @@ class DFRH extends AbstractTableData {
         if (valueList != null) {
             return
         }
-        def res = new URL("http://192.168.1.104:8080/Ddaas/tag/all").getText("utf-8")
-        FRContext.getLogger().info("==============HTTP RES================: \n" + res);
+        String servAddr = this.parameters[0].getValue().toString()  // "http://192.168.1.104:8080/Ddaas/tag/all"
+//        String metaObjId = this.parameters[1].getValue().toString(); // ""
+        def res = new URL(servAddr).getText("utf-8")
+        FRContext.getLogger().info("==============HTTP RES================: \n" + res)
         def jsonSlurper = new JsonSlurper()
         def rawData = jsonSlurper.parseText(res).data
         this.colNum = rawData[0].size()
