@@ -1,3 +1,3 @@
-# DFH
+# Introduction
 
-Groovy implementation of DDaaS FineReport Helper.
+DDaaS FineReport Helper (DFRH).
