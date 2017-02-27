@@ -1,14 +1,14 @@
 <component name="libraryTable">
   <library name="lib">
     <CLASSES>
-      <root url="file://$PROJECT_DIR$/../devs/cli/lib" />
-      <root url="file://$PROJECT_DIR$/../devs/cli/lib/jetty" />
-      <root url="file://$PROJECT_DIR$/../devs/cli/lib/report" />
+      <root url="file://$PROJECT_DIR$/../frsrc/lib" />
+      <root url="file://$PROJECT_DIR$/../frsrc/lib/jetty" />
+      <root url="file://$PROJECT_DIR$/../frsrc/lib/report" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
-    <jarDirectory url="file://$PROJECT_DIR$/../devs/cli/lib" recursive="false" />
-    <jarDirectory url="file://$PROJECT_DIR$/../devs/cli/lib/jetty" recursive="false" />
-    <jarDirectory url="file://$PROJECT_DIR$/../devs/cli/lib/report" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/../frsrc/lib" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/../frsrc/lib/jetty" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/../frsrc/lib/report" recursive="false" />
   </library>
 </component>

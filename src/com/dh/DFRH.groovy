@@ -1,8 +1,9 @@
 package com.dh
 
-import com.fr.base.FRContext
+//@Grab(group='org.codehaus.groovy.modules.http-builder', module='http-builder', version='0.7')
+
 import com.fr.data.AbstractTableData
-import groovy.json.JsonSlurper
+import groovyx.net.http.HTTPBuilder
 
 /**
 *  Created by leo on 17-1-20.
@@ -40,19 +41,12 @@ class DFRH extends AbstractTableData {
         if (valueList != null) {
             return
         }
-        String servAddr = this.parameters[0].getValue().toString()  // "http://192.168.1.104:8080/Ddaas/tag/all"
-//        String metaObjId = this.parameters[1].getValue().toString(); // ""
-        def res = new URL(servAddr).getText("utf-8")
-        FRContext.getLogger().info("==============HTTP RES================: \n" + res)
-        def jsonSlurper = new JsonSlurper()
-        def rawData = jsonSlurper.parseText(res).data
-        this.colNum = rawData[0].size()
-        this.columnNames = rawData[0].keySet() as String[]
-        this.valueList = []
-        rawData.each { row ->
-            def aRec = []
-            row.each { key, value -> aRec.add(value) }
-            valueList.add(aRec)
+        def http = new HTTPBuilder('http://192.168.1.213:8081')
+        http.post(path: '/Ddaas/data/queryMetaObjData', query: [metaObjectName: '产品', forceFetch: 1]) { resp, json ->
+            println resp.status
+            this.columnNames = json.data.metaAttrNames
+            this.colNum = this.columnNames.size()
+            this.valueList = json.data.dataRows
         }
     }
 
