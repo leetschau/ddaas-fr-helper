@@ -41,8 +41,9 @@ class DFRH extends AbstractTableData {
         if (valueList != null) {
             return
         }
-        def http = new HTTPBuilder('http://192.168.1.213:8081')
-        http.post(path: '/Ddaas/data/queryMetaObjData', query: [metaObjectName: '产品', forceFetch: 1]) { resp, json ->
+        def http = new HTTPBuilder('http://192.168.12.213:8081')
+        def metaObjName = this.parameters[0].getValue().toString()
+        http.post(path: '/Ddaas/data/queryMetaObjData', query: [metaObjectName: metaObjName, forceFetch: 1]) { resp, json ->
             println resp.status
             this.columnNames = json.data.metaAttrNames
             this.colNum = this.columnNames.size()
